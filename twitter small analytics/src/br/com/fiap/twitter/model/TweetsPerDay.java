@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import br.com.fiap.helper.TweetHelper;
+import br.com.fiap.helper.TwitterHelper;
 
 public class TweetsPerDay {
 	
@@ -53,8 +53,8 @@ public class TweetsPerDay {
 			return dateFormat.format(this.getDate()) + ": Não teve tweets";
 		}
 		
-		String authorsString 	= TweetHelper.getFormattedMessageAuthor(this.listTweets);
-		String datesString 		= TweetHelper.getFormattedMessageDate(this.listTweets);
+		String authorsString 	= TwitterHelper.getFormattedMessageAuthor(this.listTweets);
+		String datesString 		= TwitterHelper.getFormattedMessageDate(this.listTweets);
 		
 		return dateFormat.format(this.getDate()) +": "+ 
 			this.getNumberTweets() + " tweets. / " +

@@ -3,7 +3,7 @@ package br.com.fiap.twitter;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import br.com.fiap.helper.TweetHelper;
+import br.com.fiap.helper.TwitterHelper;
 import br.com.fiap.twitter.model.Tweet;
 import br.com.fiap.twitter.model.TweetsPerDay;
 
@@ -33,8 +33,8 @@ public class Main {
 			total.addAll(dataTweets.get(i).getListTweets());
 		}
 		
-		String messageAuthor 	= TweetHelper.getFormattedMessageAuthor(total);
-		String messageDate 		= TweetHelper.getFormattedMessageDate(total);
+		String messageAuthor 	= TwitterHelper.getFormattedMessageAuthor(total);
+		String messageDate 		= TwitterHelper.getFormattedMessageDate(total);
 		
 		System.out.println("==================================================");
 		System.out.println( messageAuthor );

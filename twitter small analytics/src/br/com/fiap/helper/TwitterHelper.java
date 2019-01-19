@@ -6,7 +6,7 @@ import java.util.Collections;
 
 import br.com.fiap.twitter.model.Tweet;
 
-public final class TweetHelper {
+public final class TwitterHelper {
 	
 	private static String[] getFirstAndLastAuthor(ArrayList<Tweet> listTweet) {		
 		Collections.sort(listTweet,(t1, t2) -> t1.getAuthor().compareTo(t2.getAuthor()));
@@ -43,13 +43,13 @@ public final class TweetHelper {
 	}
 	
 	public static String getFormattedMessageAuthor (ArrayList<Tweet> listTweet) {
-		String[] aux = TweetHelper.getFirstAndLastAuthor(listTweet);
+		String[] aux = TwitterHelper.getFirstAndLastAuthor(listTweet);
 		
 		return aux[1] != null ? aux[0] + " foi o primeiro autor e "+ aux[1] + " último autor." : aux[0];
 	}
 	
 	public static String getFormattedMessageDate (ArrayList<Tweet> listTweet) {
-		String[] aux = TweetHelper.getFirstAndLastTweetDate(listTweet);
+		String[] aux = TwitterHelper.getFirstAndLastTweetDate(listTweet);
 		
 		return aux[1] != null ? aux[0] + " foi o primeiro autor e "+ aux[1] + " último autor." : aux[0];
 	}
