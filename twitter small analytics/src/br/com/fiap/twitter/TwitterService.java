@@ -1,12 +1,12 @@
-package twitter;
+package br.com.fiap.twitter;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
-import java.util.List;
 
-import twitter4j.DirectMessage;
+import br.com.fiap.twitter.model.Tweet;
+import br.com.fiap.twitter.model.TweetsPerDay;
 import twitter4j.Query;
 import twitter4j.QueryResult;
 import twitter4j.Status;
@@ -21,32 +21,11 @@ public class TwitterService {
 		this.twitter = twitterClient.getTwitter();
 	}
 	
-	public List<Status> getHomeTimeline() {
-		try {
-			return this.twitter.getHomeTimeline();			
-		} catch (TwitterException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
-	public Status updateStatus(String message) {
+	public Status updateStatus(String message) {        
 		try {
 			Status status = this.twitter.updateStatus(message);	
 			
 			return status;
-		} catch (TwitterException e) {
-			e.printStackTrace();
-		}
-		
-		return null;
-	}
-	
-	public DirectMessage sendDirectMessage(String user, String message) {
-		try {
-			DirectMessage directMessage = this.twitter.sendDirectMessage(user, message);	
-			
-			return directMessage;
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
@@ -85,10 +64,10 @@ public class TwitterService {
 				GregorianCalendar previousDate = new GregorianCalendar(); 
 				
 				previousDate.setTime(since.getTime());
-				previousDate.add(GregorianCalendar.DAY_OF_MONTH, -1);
+				previousDate.add(GregorianCalendar.DAY_OF_MONTH, +1);
 				
-				query.setSince(dateFormat.format(previousDate.getTime()));
-				query.setUntil(dateFormat.format(since.getTime()));
+				query.setSince(dateFormat.format(since.getTime()));
+				query.setUntil(dateFormat.format(previousDate.getTime()));
 				
 				QueryResult result; 
 				

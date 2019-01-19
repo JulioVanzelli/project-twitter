@@ -1,4 +1,4 @@
-package twitter;
+package br.com.fiap.twitter.model;
 
 import java.util.Date;
 

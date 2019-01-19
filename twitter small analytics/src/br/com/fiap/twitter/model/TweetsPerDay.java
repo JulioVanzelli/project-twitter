@@ -1,8 +1,10 @@
-package twitter;
+package br.com.fiap.twitter.model;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+import br.com.fiap.helper.TweetHelper;
 
 public class TweetsPerDay {
 	
@@ -51,11 +53,8 @@ public class TweetsPerDay {
 			return dateFormat.format(this.getDate()) + ": Não teve tweets";
 		}
 		
-		String[] authors = TweetHelper.getFirstAndLastAuthor(this.listTweets);
-		String[] dates = TweetHelper.getFirstAndLastTweetDate(this.listTweets);
-		
-		String authorsString = authors[1] != null ? authors[0] + " foi o primeiro autor e "+ authors[1] + " último autor." : "Sem autor.";
-		String datesString = dates[1] != null  ? dates[0] + " foi o primeiro tweet e "+ dates[1] + " último tweet." : "Sem tweet.";
+		String authorsString 	= TweetHelper.getFormattedMessageAuthor(this.listTweets);
+		String datesString 		= TweetHelper.getFormattedMessageDate(this.listTweets);
 		
 		return dateFormat.format(this.getDate()) +": "+ 
 			this.getNumberTweets() + " tweets. / " +

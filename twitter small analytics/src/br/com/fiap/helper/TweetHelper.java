@@ -1,12 +1,14 @@
-package twitter;
+package br.com.fiap.helper;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import br.com.fiap.twitter.model.Tweet;
+
 public final class TweetHelper {
 	
-	public static String[] getFirstAndLastAuthor(ArrayList<Tweet> listTweet) {		
+	private static String[] getFirstAndLastAuthor(ArrayList<Tweet> listTweet) {		
 		Collections.sort(listTweet,(t1, t2) -> t1.getAuthor().compareTo(t2.getAuthor()));
 		
 		String[] authors = new String[2];
@@ -22,7 +24,7 @@ public final class TweetHelper {
 		return authors;
 	}
 	
-	public static String[] getFirstAndLastTweetDate(ArrayList<Tweet> listTweet) {
+	private static String[] getFirstAndLastTweetDate(ArrayList<Tweet> listTweet) {
 		SimpleDateFormat dateHourFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		
 		Collections.sort(listTweet,(t1, t2) -> t1.getDate().compareTo(t2.getDate()));
@@ -38,6 +40,18 @@ public final class TweetHelper {
 		dates[1] = dateHourFormat.format(listTweet.get(listTweet.size()-1).getDate());
 		
 		return dates;
+	}
+	
+	public static String getFormattedMessageAuthor (ArrayList<Tweet> listTweet) {
+		String[] aux = TweetHelper.getFirstAndLastAuthor(listTweet);
+		
+		return aux[1] != null ? aux[0] + " foi o primeiro autor e "+ aux[1] + " último autor." : aux[0];
+	}
+	
+	public static String getFormattedMessageDate (ArrayList<Tweet> listTweet) {
+		String[] aux = TweetHelper.getFirstAndLastTweetDate(listTweet);
+		
+		return aux[1] != null ? aux[0] + " foi o primeiro autor e "+ aux[1] + " último autor." : aux[0];
 	}
 	
 }

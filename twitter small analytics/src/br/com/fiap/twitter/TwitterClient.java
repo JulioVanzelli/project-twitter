@@ -1,5 +1,6 @@
-package twitter;
+package br.com.fiap.twitter;
 
+import br.com.fiap.config.Config;
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
@@ -11,11 +12,13 @@ public class TwitterClient {
 	private String accessToken;
 	private String accessTokenSecret;
 	
-	public TwitterClient(String apiKey, String apiSecretKey, String accessToken, String accessTokenSecret) {
-		this.apiKey = apiKey;
-		this.apiSecretKey = apiSecretKey;
-		this.accessToken = accessToken;
-		this.accessTokenSecret = accessTokenSecret;
+	public TwitterClient() {
+		Config config = new Config("config.properties");
+		
+		this.apiKey = config.getProperty("twitter_api_key");
+		this.apiSecretKey = config.getProperty("twitter_api_secret_key");
+		this.accessToken = config.getProperty("twitter_access_token");
+		this.accessTokenSecret = config.getProperty("twitter_access_token_secret");
 	}
 	
 	private AccessToken loadAccessToken() {
