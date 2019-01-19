@@ -51,7 +51,7 @@ public final class TwitterHelper {
 	public static String getFormattedMessageDate (ArrayList<Tweet> listTweet) {
 		String[] aux = TwitterHelper.getFirstAndLastTweetDate(listTweet);
 		
-		return aux[1] != null ? aux[0] + " foi o primeiro autor e "+ aux[1] + " último autor." : aux[0];
+		return aux[1] != null ? aux[0] + " foi o primeiro tweet e "+ aux[1] + " último tweet." : aux[0];
 	}
 	
 }

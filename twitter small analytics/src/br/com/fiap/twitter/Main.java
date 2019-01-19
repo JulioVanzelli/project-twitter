@@ -10,7 +10,7 @@ import br.com.fiap.twitter.model.TweetsPerDay;
 public class Main {
 
 	public static void main(String[] args) {
-		String mentioned 	= "@julio_vanzelli";
+		String mentioned 	= "@michelpf";
 		String hashtag 		= "openjdk";
 		
 		TwitterService twitterService = new TwitterService(new TwitterClient());
@@ -45,7 +45,7 @@ public class Main {
 	}
 	
 	public static String getFormattedMessage(String mentioned, String hashtag, String message) {
-		return mentioned + " ("+ hashtag + ") : " + message;
+		return mentioned + " (#"+ hashtag + ") : " + message;
 	}
 
 }
